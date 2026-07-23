@@ -48,7 +48,7 @@ El buen científico de datos es una persona receptiva a la realidad que le rodea
 
 En primer lugar es importante entender las técnicas que se usan habitualmente para manipular/desinformar: 
 
-# 1. Resumen de técnicas de desinformación/manipulación
+# Resumen de técnicas de desinformación/manipulación
 
 ```{r tabla-tecnicas}
 tecnicas <- data.frame(
@@ -74,7 +74,7 @@ tecnicas <- data.frame(
     "Cuanto más se repite un mensaje —más lo oímos—, más creíble parece, independientemente de su veracidad.",
     "Cifras, gráficos o estadísticas reales pero descontextualizados o mostrados solo cuando confirman la tesis previa transmiten objetividad aparente y refuerzan el **sesgo de confirmación** del receptor.",
     "Ofrece un cierre cognitivo (necesidad psicológica de llegar a una respuesta definitiva ante una pregunta) ante un problema complejo, más cómodo que sostener la ambigüedad de una gestión gradual sin soluciones inmediatas y rápidas a la vista.",
-    "Reduce un asunto a dos opciones extremas, situación donde el ser humano se encuentra cómodo debido a su tendencia al pensamiento binario.",
+    "Reduce un asunto a dos opciones antagónicas, situación donde el ser humano se encuentra cómodo debido a su tendencia al pensamiento binario.",
     "Desvía el debate hacia atacar a quien habla en lugar de rebatir el argumento.",
     "Simula un respaldo popular amplio para generar sensación de consenso genuino donde no lo hay (\"todos sabemos que...\"), sustituyendo así la evidencia por la sensación de mayoría o de prestigio de quien habla.",
     "Presentarse como víctima genera empatía automática y desvía la atención de las propias responsabilidades.",
@@ -94,7 +94,7 @@ El objetivo del foro es tratar temas de actualidad donde aparezca este fenómeno
 
 ---
 
-# 2. Caso: "Lawfare" — PP (2009-2018) y PSOE (2024-2026)
+# Caso: "Lawfare" — PP (2009-2018) y PSOE (2024-2026)
 
 ```{r tabla-declaraciones}
 declaraciones <- data.frame(
@@ -164,7 +164,7 @@ kable(lawfare_tec, align = "l")
 
 ---
 
-# 3. Caso: soluciones sencillas — Vox (Armada) y Podemos (nacionalizar)
+# Caso: el atractivo de soluciones sencillas — Vox (Armada) y Podemos (nacionalizar)
 
 ```{r tabla-soluciones}
 soluciones <- data.frame(
@@ -213,7 +213,7 @@ kable(soluciones_tec, align = "l")
 
 ---
 
-# 4. Caso: vacunas y autismo
+# Caso: vacunas y autismo
 
 En 1998, Andrew Wakefield publicó en *The Lancet* un estudio con solo 12 niños que sugería una relación entre la vacuna triple vírica y el autismo. Una investigación periodística posterior (Brian Deer, *BMJ*, 2011) reveló que era un fraude diseñado para respaldar una demanda judicial contra el fabricante de la vacuna, con historiales clínicos alterados para encajar con la hipótesis.<a class="fuente" href="https://www.bmj.com/content/342/bmj.c5347" title="Brian Deer, «Secrets of the MMR scare: how the case against the MMR vaccine was fixed», BMJ (2011)" target="_blank">🔗 <em>BMJ</em>, 2011</a> En 2010, *The Lancet* retiró formalmente el artículo y Wakefield fue expulsado del ejercicio de la medicina en el Reino Unido.<a class="fuente" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(10)60175-4/fulltext" title="Retractación del artículo de Wakefield, The Lancet (2010)" target="_blank">🔗 retractación <em>Lancet</em>, 2010</a> Otras veinte investigaciones independientes descartaron el vínculo entre vacunas y autismo. Pese a ello, el estudio provocó un descenso en las tasas de vacunación y brotes posteriores de sarampión.
 
@@ -242,7 +242,7 @@ kable(vacunas_tec, align = "l")
 
 ---
 
-# 5. Caso: la influencia humana en el cambio climático
+# Caso: la influencia humana en el cambio climático
 
 El Grupo Intergubernamental de Expertos sobre el Cambio Climático (IPCC), que sintetiza en cada informe miles de estudios revisados por pares, concluyó en su Sexto Informe de Evaluación (AR6, 2021) que «es inequívoco que la influencia humana ha calentado la atmósfera, el océano y la tierra».<a class="fuente" href="https://www.ipcc.ch/report/ar6/wg1/chapter/summary-for-policymakers/" title="IPCC, Sexto Informe de Evaluación (AR6), Grupo de Trabajo I, Resumen para responsables de políticas, 2021" target="_blank">🔗 IPCC AR6, 2021</a> La temperatura media global ha aumentado en torno a 1,1 °C respecto a la era preindustrial, y la concentración de CO2 ha pasado de unas 280 ppm preindustriales a más de 420 ppm actuales, el nivel más alto en al menos 800.000 años (medido en los testigos de hielo).<a class="fuente" href="https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide" title="NOAA Climate.gov: CO2 atmosférico y el registro de 800.000 años de los testigos de hielo" target="_blank">🔗 NOAA Climate.gov</a> La firma isotópica de ese carbono adicional (empobrecido en carbono-13 y carbono-14) identifica su origen en la quema de combustibles fósiles, no en fuentes naturales.<a class="fuente" href="https://www.climate.gov/news-features/climate-qa/what-evidence-exists-earth-warming-and-humans-are-main-cause" title="NOAA Climate.gov: evidencias del origen humano del calentamiento, incluida la huella isotópica del carbono" target="_blank">🔗 NOAA Climate.gov</a> Más del 97 % de los climatólogos que publican en la literatura científica coinciden en el origen humano del calentamiento reciente.<a class="fuente" href="https://science.nasa.gov/climate-change/scientific-consensus/" title="NASA: consenso científico sobre el cambio climático de origen humano (97 % o más)" target="_blank">🔗 NASA</a>
 
