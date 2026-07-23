@@ -90,27 +90,27 @@ kable(tecnicas, align = "l")
 
 Estas técnicas no son mutuamente excluyentes: es habitual que un mismo mensaje combine varias. El mensaje persuasivo de la manipulación/desinformación se basa en su capacidad para activar mecanismos psicológicos concretos: cierre cognitivo (necesidad psicológica de llegar a una respuesta definitiva ante una pregunta), miedo, necesidad de un antagonista claro, tendencia al pensamiento binario, familiaridad por repetición, etc.
 
-El objetivo del foro es tratar temas de actualidad donde aparezca este fenómeno, identificando además las técnicas de manipulación/desinformación empleadas. Debajo aparecen ejemplos para ilustrar la idea. Los estudios deben ser objetivos e intentar dar una visión global no sesgada, incorporando varios puntos de vista. La IA puede ayudar mucho a confeccionar estos estudios.
+El objetivo del foro es tratar temas de actualidad donde aparezca este fenómeno, identificando además las técnicas de manipulación/desinformación empleadas. Debajo aparecen ejemplos para ilustrar la idea. Los estudios deben ser objetivos e intentar dar una visión global no sesgada, incorporando varios puntos de vista. La IA puede ayudar mucho a confeccionar estos estudios. **Como aparece en los ejemplos, es muy importante añadir enlaces con las fuentes utilizadas**. 
 
 ---
 
-# Caso: "Lawfare" — PP (2009-2018) y PSOE (2024-2026)
+# Caso de estudio: "Lawfare" — PP (2009-2018) y PSOE (2024-2026)
 
 ```{r tabla-declaraciones}
 declaraciones <- data.frame(
   Nombre = c("Mariano Rajoy", "M.ª Dolores de Cospedal", "Francisco Camps",
              "Óscar Puente", "Patxi López", "Félix Bolaños", "Pedro Sánchez"),
   `Cargo / fecha` = c("Pdte. PP, 2009", "Sec. Gral. PP, 2018", "Expdte. Generalitat (PP)",
-                      "Ministro, 2024", "Portavoz PSOE, 2024", "Ministro Justicia, 2025",
+                      "Ministro, 2026", "Portavoz PSOE, 2026", "Ministro Justicia, 2026",
                       "Sec. Gral. PSOE, 2026"),
   `Declaración` = c(
     "\u201cNo es una trama del PP, es una trama contra el PP\u201d",
     "\u201c¿Es que los jueces son infalibles?\u201d",
     "\u201cVíctima de una persecución mediática\u201d",
-    "\u201cCasos de lawfare sin duda hay en este país\u201d",
-    "Caso Begoña Gómez: \u201cmontaje de la ultraderecha\u201d",
-    "Corrupción como \u201cpersecución ultra\u201d a progresistas",
-    "\u201cHay un linchamiento contra el PSOE\u201d"
+    "\u201cCasos de lawfare sin duda hay en España y negarlo es un gesto de cinismo\u201d",
+    "Hay hechos que demuestran que ha habido causas que se abren con recortes de periódicos; distintas velocidades injustificadas y sentencias incomprensibles",
+    "los ultras están pervirtiendo causas judiciales para perseguir a gente honesta, progresista.",
+    "A todos les advierte que recular no está entre sus intenciones. Como tampoco van a rebajar, ni el PSOE, ni el Gobierno ni él mismo, la denuncia pública por el \u201dlinchamiento\u201d que a su juicio está sufriendo el proyecto socialista\u201d"
   ),
   check.names = FALSE,
   stringsAsFactors = FALSE
@@ -128,8 +128,8 @@ declaraciones[["Declaración"]] <- paste0(
         "Vozpópuli, 2024", "Camps se presenta como víctima de acoso judicial y mediático durante los años de la causa Gürtel (Vozpópuli)"),
     fte("https://www.infobae.com/espana/2023/11/27/oscar-puente-casos-de-lawfare-sin-duda-hay-en-espana-y-negarlo-es-un-gesto-de-cinismo/",
         "Infobae, 2023", "Óscar Puente: «Casos de lawfare sin duda hay en España y negarlo es un gesto de cinismo» (nov. 2023)"),
-    fte("https://theobjective.com/espana/politica/2024-05-28/psoe-niega-imputacion-begona-gomez/",
-        "The Objective, 2024", "Patxi López y el PSOE presentan el caso Begoña Gómez como un montaje de la derecha y la ultraderecha, 2024"),
+    fte("https://www.elmundo.es/espana/2026/06/11/6a2a74c2fc6c83474c8b4584.html",
+        "El mundo, 2026", "Patxi López siembra dudas sobre los jueces: Hay velocidades injustificadas y sentencias incomprensibles, y el PP replica: Se agarran al lawfare porque no les queda otra"),
     fte("https://www.infobae.com/espana/agencias/2025/05/23/bolanos-dice-que-los-ultras-pervierten-la-justicia-para-perseguir-a-personas-honestas/",
         "Infobae/EFE, 2025", "Bolaños acusa a los «ultras» de pervertir la Justicia para perseguir a personas honestas y progresistas (EFE, 2025)"),
     fte("https://www.elindependiente.com/espana/2026/06/02/sanchez-mantiene-hoja-ruta-presiones-internas-socios-linchamiento-contra-psoe/",
@@ -172,7 +172,7 @@ soluciones <- data.frame(
                 "Podemos: nacionalizar una eléctrica para \u201cbajar el precio de la luz\u201d"),
   `Objeción técnica` = c(
     "El Almirante Jefe de Estado Mayor de la Armada declaró que la Ley del Mar obliga a rescatar, no a interceptar; además, en caso de rescate en alta mar, la única solución práctica es llevar a los rescatados a un puerto español. Es difícilmente imaginable que se les pueda desembarcar, \"en caliente \", por la fuerza, en un país que no los acepta.",
-    "El coste de adquisición de las eléctricas tiene un precio prohibitivo para las arcas públicas, con lo cual resulta inabordable desde el punto de vista práctico. Además, el precio de la electricidad no solo depende de las eléctricas, lo fija el mecanismo marginalista (la tecnología más cara, típicamente el gas); por tanto nacionalizar una sola compañía no altera esa variable. Habría que modificar el modelo completo de fijación de precios a nivel internacional."
+    "El coste de nacionalizar las eléctricas tiene un precio prohibitivo para las arcas públicas (por ejemplo, ENDESA ronda los 40 mil millones de euros, sobre un 2% del PIB Nacional), con lo cual resulta inabordable desde el punto de vista práctico. Además, el precio de la electricidad no solo depende de las eléctricas, lo fija el mecanismo marginalista (la tecnología más cara, típicamente el gas); por tanto nacionalizar una sola compañía no altera esa variable. Habría que modificar el modelo completo de fijación de precios a nivel internacional."
   ),
   check.names = FALSE,
   stringsAsFactors = FALSE
@@ -213,7 +213,7 @@ kable(soluciones_tec, align = "l")
 
 ---
 
-# Caso: vacunas y autismo
+# Caso de estudio: vacunas y autismo
 
 En 1998, Andrew Wakefield publicó en *The Lancet* un estudio con solo 12 niños que sugería una relación entre la vacuna triple vírica y el autismo. Una investigación periodística posterior (Brian Deer, *BMJ*, 2011) reveló que era un fraude diseñado para respaldar una demanda judicial contra el fabricante de la vacuna, con historiales clínicos alterados para encajar con la hipótesis.<a class="fuente" href="https://www.bmj.com/content/342/bmj.c5347" title="Brian Deer, «Secrets of the MMR scare: how the case against the MMR vaccine was fixed», BMJ (2011)" target="_blank">🔗 <em>BMJ</em>, 2011</a> En 2010, *The Lancet* retiró formalmente el artículo y Wakefield fue expulsado del ejercicio de la medicina en el Reino Unido.<a class="fuente" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(10)60175-4/fulltext" title="Retractación del artículo de Wakefield, The Lancet (2010)" target="_blank">🔗 retractación <em>Lancet</em>, 2010</a> Otras veinte investigaciones independientes descartaron el vínculo entre vacunas y autismo. Pese a ello, el estudio provocó un descenso en las tasas de vacunación y brotes posteriores de sarampión.
 
@@ -242,13 +242,13 @@ kable(vacunas_tec, align = "l")
 
 ---
 
-# Caso: la influencia humana en el cambio climático
+# Caso de estudio: la influencia humana en el cambio climático
 
 El Grupo Intergubernamental de Expertos sobre el Cambio Climático (IPCC), que sintetiza en cada informe miles de estudios revisados por pares, concluyó en su Sexto Informe de Evaluación (AR6, 2021) que «es inequívoco que la influencia humana ha calentado la atmósfera, el océano y la tierra».<a class="fuente" href="https://www.ipcc.ch/report/ar6/wg1/chapter/summary-for-policymakers/" title="IPCC, Sexto Informe de Evaluación (AR6), Grupo de Trabajo I, Resumen para responsables de políticas, 2021" target="_blank">🔗 IPCC AR6, 2021</a> La temperatura media global ha aumentado en torno a 1,1 °C respecto a la era preindustrial, y la concentración de CO2 ha pasado de unas 280 ppm preindustriales a más de 420 ppm actuales, el nivel más alto en al menos 800.000 años (medido en los testigos de hielo).<a class="fuente" href="https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide" title="NOAA Climate.gov: CO2 atmosférico y el registro de 800.000 años de los testigos de hielo" target="_blank">🔗 NOAA Climate.gov</a> La firma isotópica de ese carbono adicional (empobrecido en carbono-13 y carbono-14) identifica su origen en la quema de combustibles fósiles, no en fuentes naturales.<a class="fuente" href="https://www.climate.gov/news-features/climate-qa/what-evidence-exists-earth-warming-and-humans-are-main-cause" title="NOAA Climate.gov: evidencias del origen humano del calentamiento, incluida la huella isotópica del carbono" target="_blank">🔗 NOAA Climate.gov</a> Más del 97 % de los climatólogos que publican en la literatura científica coinciden en el origen humano del calentamiento reciente.<a class="fuente" href="https://science.nasa.gov/climate-change/scientific-consensus/" title="NASA: consenso científico sobre el cambio climático de origen humano (97 % o más)" target="_blank">🔗 NASA</a>
 
 Frente a esta evidencia convergente de múltiples disciplinas independientes, el negacionismo climático no aporta un cuerpo de pruebas alternativo, sino un repertorio de objeciones aisladas y recurrentes. Conviene distinguir dos planos que el discurso negacionista confunde deliberadamente: el debate legítimo sobre qué políticas adoptar —ritmo, coste, instrumentos—, que es materia opinable, y la negación del diagnóstico físico —que el ser humano, a través principalmente de la emisión de gases de efecto invernadero, influye de forma significativa en el calentamiento—, que contradice la evidencia establecida.
 
-En este contexto se ha popularizado la etiqueta «fanatismo climático», acuñada desde posiciones negacionistas para caricaturizar/ridiculizar a quienes defienden la acción climática como fanáticos que, de forma irracional, anteponen el clima al bienestar y al progreso de las personas.
+En este contexto se ha popularizado la etiqueta «fanatismo climático», acuñada desde posiciones negacionistas para caricaturizar a quienes defienden la acción climática como fanáticos que, de forma irracional, anteponen el clima al bienestar y al progreso de las personas.
 
 ## Las técnicas de manipulación en acción
 
