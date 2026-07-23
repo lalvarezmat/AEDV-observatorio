@@ -1,0 +1,282 @@
+---
+title: "Observatorio de manipulación/desinformación"
+subtitle: "Técnicas psicológicas y casos de estudio"
+output:
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+    df_print: kable
+---
+
+<style>
+h1.title { font-size: 26px; font-weight: bold; }
+h1 { font-size: 22px; font-weight: bold; }
+h2 { font-size: 18px; font-weight: bold; }
+h3 { font-size: 16px; font-weight: bold; }
+body { font-size: 14px;}
+p { font-size: 14px; margin-bottom: 10px; }
+blockquote { background-color: #FFE0B2; border-left: 4px solid #FF9800; padding: 8px 12px; border-radius: 4px; font-size: 14px; }
+.respuesta { background-color: #E3F2FD; border-left: 4px solid #1565C0; padding: 8px 12px; border-radius: 4px; margin-top: 4px; }
+details { margin-top: 4px; margin-bottom: 6px; }
+details > summary { cursor: pointer; font-weight: bold; color: #1565C0; font-size: 13px; padding: 3px 0; list-style: none; }
+details > summary::before { content: "▶ "; font-size: 11px; }
+details[open] > summary::before { content: "▼ "; font-size: 11px; }
+/* Icono-enlace de fuente a la derecha de una afirmación: discreto y sin saltar de línea */
+a.fuente { font-size: 12px; text-decoration: none; white-space: nowrap; margin-left: 4px; color: #1565C0; }
+a.fuente:hover { text-decoration: underline; }
+/* Tablas anchas: envolver el chunk en <div class="tabla-scroll"> ... </div> para verlas completas con scroll horizontal */
+.tabla-scroll { overflow-x: auto; }
+.tabla-scroll table { width: auto; min-width: 100%; }
+.tabla-scroll table td, .tabla-scroll table th { white-space: nowrap; }
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(knitr)
+
+# Genera un icono-enlace de fuente para colocar a la derecha de una afirmación.
+# La etiqueta (medio y año) es visible; la descripción completa va en el tooltip.
+# En las tablas hay que llamar a kable(..., escape = FALSE) para que el HTML se renderice.
+fte <- function(url, etiqueta, titulo = etiqueta) {
+  paste0("<a class=\"fuente\" href=\"", url, "\" title=\"", titulo,
+         "\" target=\"_blank\">\U0001F517 ", etiqueta, "</a>")
+}
+```
+
+El buen científico de datos es una persona receptiva a la realidad que le rodea y capaz de analizar la información con espíritu crítico en función de los datos/hechos que la soportan. En este foro, los alumnos podrán publicar casos de estudio de manipulación/desinformación. **La participación en este foro se tendrá en cuenta positivamente a los alumnos en la nota de participación en las actividades docentes**.
+
+En primer lugar es importante entender las técnicas que se usan habitualmente para manipular/desinformar: 
+
+# 1. Resumen de técnicas de desinformación/manipulación
+
+```{r tabla-tecnicas}
+tecnicas <- data.frame(
+  `Técnica` = c(
+    "Creación de noticias falsas",
+    "Apelación al miedo",
+    "Teorías conspirativas",
+    "Verdad por repetición",
+    "Manipulación y selección interesada de datos",
+    "Proponer soluciones sencillas a problemas complejos",
+    "Falsa dicotomía",
+    "Matar al mensajero",
+    "Respaldo social",
+    "Victimismo / inversión de roles",
+    "Urgencia",
+    "Y tú más",
+    "El control del relato"
+  ),
+  `Por qué funciona` = c(
+    "Inventar hechos y presentarlos con apariencia de veracidad es una herramienta eficaz para sostener las tesis propias o infligir daño a los adversarios.",
+    "Activa la respuesta de alarma y desplaza el pensamiento crítico, favoreciendo la aceptación rápida sin verificar.",
+    "Resulta eficaz para apoyar las tesis propias sin presentar pruebas porque, por propia definición, se trata de tramas ocultas. Refuerzan el **sesgo de confirmación** del receptor al identificar la causa o culpable.",
+    "Cuanto más se repite un mensaje —más lo oímos—, más creíble parece, independientemente de su veracidad.",
+    "Cifras, gráficos o estadísticas reales pero descontextualizados o mostrados solo cuando confirman la tesis previa transmiten objetividad aparente y refuerzan el **sesgo de confirmación** del receptor.",
+    "Ofrece un cierre cognitivo (necesidad psicológica de llegar a una respuesta definitiva ante una pregunta) ante un problema complejo, más cómodo que sostener la ambigüedad de una gestión gradual sin soluciones inmediatas y rápidas a la vista.",
+    "Reduce un asunto a dos opciones extremas, situación donde el ser humano se encuentra cómodo debido a su tendencia al pensamiento binario.",
+    "Desvía el debate hacia atacar a quien habla en lugar de rebatir el argumento.",
+    "Simula un respaldo popular amplio para generar sensación de consenso genuino donde no lo hay (\"todos sabemos que...\"), sustituyendo así la evidencia por la sensación de mayoría o de prestigio de quien habla.",
+    "Presentarse como víctima genera empatía automática y desvía la atención de las propias responsabilidades.",
+    "Reduce el tiempo disponible para pensar, empujando a decidir antes de verificar.",
+    "Responde a una crítica señalando la supuesta falta del otro, evitando abordar el argumento original.",
+    "Consiste en influir en el momento y el enfoque con que se difunden las noticias que benefician para neutralizar el impacto de las que perjudican."
+  ),
+  check.names = FALSE,
+  stringsAsFactors = FALSE
+)
+kable(tecnicas, align = "l")
+```
+
+Estas técnicas no son mutuamente excluyentes: es habitual que un mismo mensaje combine varias. El mensaje persuasivo de la manipulación/desinformación se basa en su capacidad para activar mecanismos psicológicos concretos: cierre cognitivo (necesidad psicológica de llegar a una respuesta definitiva ante una pregunta), miedo, necesidad de un antagonista claro, tendencia al pensamiento binario, familiaridad por repetición, etc.
+
+El objetivo del foro es tratar temas de actualidad donde aparezca este fenómeno, identificando además las técnicas de manipulación/desinformación empleadas. Debajo aparecen ejemplos para ilustrar la idea. Los estudios deben ser objetivos e intentar dar una visión global no sesgada, incorporando varios puntos de vista. La IA puede ayudar mucho a confeccionar estos estudios.
+
+---
+
+# 2. Caso: "Lawfare" — PP (2009-2018) y PSOE (2024-2026)
+
+```{r tabla-declaraciones}
+declaraciones <- data.frame(
+  Nombre = c("Mariano Rajoy", "M.ª Dolores de Cospedal", "Francisco Camps",
+             "Óscar Puente", "Patxi López", "Félix Bolaños", "Pedro Sánchez"),
+  `Cargo / fecha` = c("Pdte. PP, 2009", "Sec. Gral. PP, 2018", "Expdte. Generalitat (PP)",
+                      "Ministro, 2024", "Portavoz PSOE, 2024", "Ministro Justicia, 2025",
+                      "Sec. Gral. PSOE, 2026"),
+  `Declaración` = c(
+    "\u201cNo es una trama del PP, es una trama contra el PP\u201d",
+    "\u201c¿Es que los jueces son infalibles?\u201d",
+    "\u201cVíctima de una persecución mediática\u201d",
+    "\u201cCasos de lawfare sin duda hay en este país\u201d",
+    "Caso Begoña Gómez: \u201cmontaje de la ultraderecha\u201d",
+    "Corrupción como \u201cpersecución ultra\u201d a progresistas",
+    "\u201cHay un linchamiento contra el PSOE\u201d"
+  ),
+  check.names = FALSE,
+  stringsAsFactors = FALSE
+)
+
+# Añade el icono-enlace de fuente a la derecha de cada declaración
+declaraciones[["Declaración"]] <- paste0(
+  declaraciones[["Declaración"]],
+  c(
+    fte("https://www.eldiario.es/politica/intervencion-rajoy-fiscales-pp-gurtel_1_3454992.html",
+        "elDiario, 2009", "Intervención de Rajoy ante la cúpula del PP tras las primeras detenciones de Gürtel, febrero de 2009 (elDiario.es)"),
+    fte("https://www.elnacional.cat/es/politica/maria-dolores-cospedal-sentencia-gurtel_272874_102.html",
+        "El Nacional, 2018", "Cospedal cuestiona la sentencia de Gürtel: «¿Es que los jueces son infalibles?», 2018"),
+    fte("https://www.vozpopuli.com/espana/comunidad-valenciana/camps-acoso-pp-judicial.html",
+        "Vozpópuli, 2024", "Camps se presenta como víctima de acoso judicial y mediático durante los años de la causa Gürtel (Vozpópuli)"),
+    fte("https://www.infobae.com/espana/2023/11/27/oscar-puente-casos-de-lawfare-sin-duda-hay-en-espana-y-negarlo-es-un-gesto-de-cinismo/",
+        "Infobae, 2023", "Óscar Puente: «Casos de lawfare sin duda hay en España y negarlo es un gesto de cinismo» (nov. 2023)"),
+    fte("https://theobjective.com/espana/politica/2024-05-28/psoe-niega-imputacion-begona-gomez/",
+        "The Objective, 2024", "Patxi López y el PSOE presentan el caso Begoña Gómez como un montaje de la derecha y la ultraderecha, 2024"),
+    fte("https://www.infobae.com/espana/agencias/2025/05/23/bolanos-dice-que-los-ultras-pervierten-la-justicia-para-perseguir-a-personas-honestas/",
+        "Infobae/EFE, 2025", "Bolaños acusa a los «ultras» de pervertir la Justicia para perseguir a personas honestas y progresistas (EFE, 2025)"),
+    fte("https://www.elindependiente.com/espana/2026/06/02/sanchez-mantiene-hoja-ruta-presiones-internas-socios-linchamiento-contra-psoe/",
+        "El Independiente, 2026", "Pedro Sánchez: «Hay un linchamiento contra el PSOE» (junio de 2026)")
+  )
+)
+kable(declaraciones, align = "l", escape = FALSE)
+```
+
+**Contraste con la evidencia:** ninguna de estas declaraciones ha sido respaldada por evidencias objetivas que acrediten la existencia de tramas/conspiraciones de policías/jueces contra un partido o gobierno. En cambio, sí hay procesos judiciales avanzados en sentido inverso: la Operación Kitchen (PP)<a class="fuente" href="https://es.wikipedia.org/wiki/Caso_Kitchen" title="Caso Kitchen: presunta operación parapolicial contra el extesorero Bárcenas, juzgada en la Audiencia Nacional" target="_blank">🔗 caso Kitchen</a> y el caso Leire Díez (PSOE)<a class="fuente" href="https://es.wikipedia.org/wiki/Caso_Leire_D%C3%ADez" title="Caso Leire Díez: presuntas maniobras para obtener información comprometedora sobre fiscales, jueces y mandos policiales" target="_blank">🔗 caso Leire Díez</a> documentan, con evidencias y pruebas aportadas en sede judicial, tramas ilegales de partidos/gobiernos para neutralizar investigaciones que les afectaban.
+
+## Las técnicas de manipulación en acción
+
+```{r tabla-lawfare-tecnicas}
+lawfare_tec <- data.frame(
+  `Técnica` = c("Teorías conspirativas", "Verdad por repetición",
+                "Victimismo / inversión de roles", "Matar al mensajero",
+                "Respaldo social", "Y tú más"),
+  `Cómo opera en este caso` = c(
+    "Se apela a trama/montaje/linchamiento sin aportar pruebas que vinculen a jueces y policías, que son los colaboradores imprescindibles para que exista el lawfare. Realmente se acusa sin pruebas a jueces y policías de prevaricar, es decir, de actuar deliberadamente en contra de la ley.",
+    "La idea de trama/montaje/linchamiento/lawfare se repite por múltiples voceros distintos del mismo partido, reforzando su plausibilidad al margen de que nunca se ha aportado prueba.",
+    "Presentarse como víctima de una persecución (\u201clinchamiento\u201d, \u201cpersecución mediática\u201d) desvía la atención del contenido concreto de la imputación judicial.",
+    "Cuestionar la imparcialidad genérica del juez o tribunal en lugar de rebatir la prueba concreta del caso.",
+    "Manifestaciones de la cúpula de los partidos o presentación de encuestas con apoyo popular a la existencia de lawfare.",
+    "Ambos partidos utilizan como estrategia habitual que el otro tiene / ha tenido comportamientos similares/peores."
+  ),
+  check.names = FALSE,
+  stringsAsFactors = FALSE
+)
+kable(lawfare_tec, align = "l")
+```
+
+---
+
+# 3. Caso: soluciones sencillas — Vox (Armada) y Podemos (nacionalizar)
+
+```{r tabla-soluciones}
+soluciones <- data.frame(
+  Propuesta = c("Vox: desplegar la Armada contra la inmigración irregular",
+                "Podemos: nacionalizar una eléctrica para \u201cbajar el precio de la luz\u201d"),
+  `Objeción técnica` = c(
+    "El Almirante Jefe de Estado Mayor de la Armada declaró que la Ley del Mar obliga a rescatar, no a interceptar; además, en caso de rescate en alta mar, la única solución práctica es llevar a los rescatados a un puerto español. Es difícilmente imaginable que se les pueda desembarcar, \"en caliente \", por la fuerza, en un país que no los acepta.",
+    "El coste de adquisición de las eléctricas tiene un precio prohibitivo para las arcas públicas, con lo cual resulta inabordable desde el punto de vista práctico. Además, el precio de la electricidad no solo depende de las eléctricas, lo fija el mecanismo marginalista (la tecnología más cara, típicamente el gas); por tanto nacionalizar una sola compañía no altera esa variable. Habría que modificar el modelo completo de fijación de precios a nivel internacional."
+  ),
+  check.names = FALSE,
+  stringsAsFactors = FALSE
+)
+
+# Añade el icono-enlace de fuente a la derecha de cada objeción técnica
+soluciones[["Objeción técnica"]] <- paste0(
+  soluciones[["Objeción técnica"]],
+  c(
+    fte("https://www.eldebate.com/espana/defensa/20250919/jefe-estado-mayor-armada-vox-no-estamos-contener-cayucos-ayudarles_336156.html",
+        "El Debate, 2025", "El Jefe de Estado Mayor de la Armada (AJEMA) responde a Vox: la misión es ayudar y salvar en el mar, no contener migrantes (sept. 2025)"),
+    fte("https://www.energias-renovables.com/panorama/unidas-podemos-propone-nacionalizar-una-compania-electrica-20210111",
+        "Energías Renovables, 2021", "Unidas Podemos propone nacionalizar una eléctrica; el coste de adquisición (Endesa ~24.000 M€) y el mecanismo marginalista de fijación de precios explican su inviabilidad")
+  )
+)
+kable(soluciones, align = "l", escape = FALSE)
+```
+
+## Las técnicas de manipulación en acción
+
+```{r tabla-soluciones-tecnicas}
+soluciones_tec <- data.frame(
+  `Técnica` = c("Proponer soluciones sencillas a problemas complejos", "Apelación al miedo",
+                "Falsa dicotomía", "Manipulación y selección interesada de datos",
+                "Verdad por repetición"),
+  `Cómo opera en este caso` = c(
+    "Ambas propuestas comprimen un problema estructural y multicausal (migración irregular; diseño del mercado eléctrico) en una sola palanca de acción visible e inmediata (bloqueo naval; nacionalización).",
+    "En el caso de Vox, el mensaje se apoya en la percepción de amenaza asociada a la llegada de migrantes para justificar una respuesta drástica y militar.",
+    "Se presenta la alternativa como \u201cactuar con firmeza\u201d frente a \u201cno hacer nada\u201d, ocultando las opciones intermedias (acuerdos migratorios, reforma regulatoria del mercado eléctrico) que de hecho es donde se sitúa la política real.",
+    "Se citan cifras (concesiones hidroeléctricas que caducan, número de embarcaciones) de forma aislada, sin conectar con el mecanismo causal real (formación de precios; obligaciones de rescate marítimo).",
+    "Ambas propuestas se repiten durante años (Vox desde 2020; Podemos desde 2021) por distintas voces del mismo espacio político, sin justificar/discutir objetivamente su viabilidad real."
+  ),
+  check.names = FALSE,
+  stringsAsFactors = FALSE
+)
+kable(soluciones_tec, align = "l")
+```
+
+---
+
+# 4. Caso: vacunas y autismo
+
+En 1998, Andrew Wakefield publicó en *The Lancet* un estudio con solo 12 niños que sugería una relación entre la vacuna triple vírica y el autismo. Una investigación periodística posterior (Brian Deer, *BMJ*, 2011) reveló que era un fraude diseñado para respaldar una demanda judicial contra el fabricante de la vacuna, con historiales clínicos alterados para encajar con la hipótesis.<a class="fuente" href="https://www.bmj.com/content/342/bmj.c5347" title="Brian Deer, «Secrets of the MMR scare: how the case against the MMR vaccine was fixed», BMJ (2011)" target="_blank">🔗 <em>BMJ</em>, 2011</a> En 2010, *The Lancet* retiró formalmente el artículo y Wakefield fue expulsado del ejercicio de la medicina en el Reino Unido.<a class="fuente" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(10)60175-4/fulltext" title="Retractación del artículo de Wakefield, The Lancet (2010)" target="_blank">🔗 retractación <em>Lancet</em>, 2010</a> Otras veinte investigaciones independientes descartaron el vínculo entre vacunas y autismo. Pese a ello, el estudio provocó un descenso en las tasas de vacunación y brotes posteriores de sarampión.
+
+Frente a ese fraude de 12 casos, un estudio de referencia liderado por la OMS y publicado en *The Lancet* en 2024 concluyó que la inmunización ha salvado aproximadamente 154 millones de vidas en 50 años (seis vidas por minuto), 101 millones de ellas de bebés menores de un año.<a class="fuente" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(24)00850-X/fulltext" title="Shattock et al., «Contribution of vaccination to improved survival and health», estudio OMS, The Lancet (2024)" target="_blank">🔗 <em>The Lancet</em>, 2024</a> Solo la vacuna del sarampión —la misma que Wakefield trató de desacreditar— representa 94 millones de esas vidas salvadas, y la de la poliomielitis ha evitado la parálisis de más de 20 millones de personas.
+
+## Las técnicas de manipulación en acción
+
+```{r tabla-vacunas-tecnicas}
+vacunas_tec <- data.frame(
+  `Técnica` = c("Creación de noticias falsas", "Manipulación y selección interesada de datos", "Apelación al miedo",
+                "Teorías conspirativas", "Verdad por repetición",
+                "Respaldo social"),
+  `Cómo opera en este caso` = c(
+    "El estudio de Wakefield no se limitó a seleccionar datos reales de forma sesgada: los historiales clínicos fueron alterados y varios diagnósticos de autismo fueron inventados o atribuidos incorrectamente, presentando como hallazgo científico algo que no existía.",
+    "Más allá de la fabricación, se omitió de forma interesada la información que contradecía la hipótesis: varios niños ya mostraban síntomas antes de recibir la vacuna, un dato que rompía la secuencia causal y que se ocultó para que el patrón temporal pareciera respaldar la relación vacuna → autismo.",
+    "Titulares alarmistas explotaron el miedo de los padres, desplazando la evaluación racional de un riesgo objetivamente muy bajo frente al beneficio bien establecido de la vacuna.",
+    "El movimiento antivacunas posterior reinterpretó cada desmentido científico como parte de un encubrimiento de la industria farmacéutica, en lugar de como evidencia contraria a la hipótesis original.",
+    "Aunque el estudio fue retirado en 2010 y desacreditado, sigue siendo uno de los artículos retractados más citados de la historia científica, repetido en círculos antivacunas al margen de su descrédito.",
+    "Publicarse en *The Lancet* —revista de máximo prestigio— dio al fraude una legitimidad inicial que facilitó su difusión antes de que se destapara el engaño."
+  ),
+  check.names = FALSE,
+  stringsAsFactors = FALSE
+)
+kable(vacunas_tec, align = "l")
+```
+
+---
+
+# 5. Caso: la influencia humana en el cambio climático
+
+El Grupo Intergubernamental de Expertos sobre el Cambio Climático (IPCC), que sintetiza en cada informe miles de estudios revisados por pares, concluyó en su Sexto Informe de Evaluación (AR6, 2021) que «es inequívoco que la influencia humana ha calentado la atmósfera, el océano y la tierra».<a class="fuente" href="https://www.ipcc.ch/report/ar6/wg1/chapter/summary-for-policymakers/" title="IPCC, Sexto Informe de Evaluación (AR6), Grupo de Trabajo I, Resumen para responsables de políticas, 2021" target="_blank">🔗 IPCC AR6, 2021</a> La temperatura media global ha aumentado en torno a 1,1 °C respecto a la era preindustrial, y la concentración de CO2 ha pasado de unas 280 ppm preindustriales a más de 420 ppm actuales, el nivel más alto en al menos 800.000 años (medido en los testigos de hielo).<a class="fuente" href="https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide" title="NOAA Climate.gov: CO2 atmosférico y el registro de 800.000 años de los testigos de hielo" target="_blank">🔗 NOAA Climate.gov</a> La firma isotópica de ese carbono adicional (empobrecido en carbono-13 y carbono-14) identifica su origen en la quema de combustibles fósiles, no en fuentes naturales.<a class="fuente" href="https://www.climate.gov/news-features/climate-qa/what-evidence-exists-earth-warming-and-humans-are-main-cause" title="NOAA Climate.gov: evidencias del origen humano del calentamiento, incluida la huella isotópica del carbono" target="_blank">🔗 NOAA Climate.gov</a> Más del 97 % de los climatólogos que publican en la literatura científica coinciden en el origen humano del calentamiento reciente.<a class="fuente" href="https://science.nasa.gov/climate-change/scientific-consensus/" title="NASA: consenso científico sobre el cambio climático de origen humano (97 % o más)" target="_blank">🔗 NASA</a>
+
+Frente a esta evidencia convergente de múltiples disciplinas independientes, el negacionismo climático no aporta un cuerpo de pruebas alternativo, sino un repertorio de objeciones aisladas y recurrentes. Conviene distinguir dos planos que el discurso negacionista confunde deliberadamente: el debate legítimo sobre qué políticas adoptar —ritmo, coste, instrumentos—, que es materia opinable, y la negación del diagnóstico físico —que el ser humano, a través principalmente de la emisión de gases de efecto invernadero, influye de forma significativa en el calentamiento—, que contradice la evidencia establecida.
+
+En este contexto se ha popularizado la etiqueta «fanatismo climático», acuñada desde posiciones negacionistas para caricaturizar/ridiculizar a quienes defienden la acción climática como fanáticos que, de forma irracional, anteponen el clima al bienestar y al progreso de las personas.
+
+## Las técnicas de manipulación en acción
+
+```{r tabla-clima-tecnicas}
+clima_tec <- data.frame(
+  `Técnica` = c("Manipulación y selección interesada de datos", "Teorías conspirativas",
+                "Verdad por repetición", "Respaldo social",
+                "Matar al mensajero", "Falsa dicotomía"),
+  `Cómo opera en este caso` = c(
+    "Se eligen puntos de partida o episodios concretos que aparentan contradecir la tendencia: el mito de que \u201cno hay calentamiento desde 1998\u201d toma como inicio un año de El Niño excepcionalmente cálido; una ola de frío puntual se presenta como refutación, confundiendo el tiempo meteorológico con el clima.",
+    "Se atribuye el consenso a un fraude orquestado (científicos que \u201cinventan\u201d la alarma para obtener financiación,  empresas de energías renovables o gobiernos que buscan justificar nuevos impuestos).",
+    "Lemas como \u201cel clima siempre está cambiando\u201d se repiten hasta parecer argumentos, pese a que ninguno refuta la atribución del calentamiento actual a la actividad humana.",
+    "Se difunden listas y peticiones con miles de supuestos \u201ccientíficos\u201d disidentes (como la Oregon Petition), en las que la mayoría de firmantes carece de formación en climatología, fabricando la apariencia de una división que en la comunidad experta no existe.",
+    "En lugar de rebatir los datos, se desacredita a quien los aporta: se acusa a los científicos de exagerar por interés o ideología, o se ridiculiza a quienes alertan del problema tachándolos de \u201cfanáticos climáticos\u201d. Así el debate se desplaza de las pruebas a la persona o la institución.",
+    "Se plantea como una elección entre \u201cproteger el clima\u201d o \u201cproteger la economía y el empleo\u201d, ocultando las opciones intermedias (transición gradual, tecnología, adaptación) que constituyen el terreno real de la política climática. La etiqueta \u201cfanatismo climático\u201d presupone esa misma disyuntiva —clima frente a bienestar—."
+  ),
+  check.names = FALSE,
+  stringsAsFactors = FALSE
+)
+
+# Añade el icono-enlace de fuente a la fila que menciona la Oregon Petition
+clima_tec[["Cómo opera en este caso"]] <- paste0(
+  clima_tec[["Cómo opera en este caso"]],
+  c("", "", "",
+    fte("https://ncse.ngo/misconception-monday-oregon-petition-edition",
+        "NCSE", "National Center for Science Education: análisis de la Oregon Petition; solo en torno al 0,1 % de sus firmantes son climatólogos"),
+    "", "")
+)
+kable(clima_tec, align = "l", escape = FALSE)
+```
+
