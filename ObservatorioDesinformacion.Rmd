@@ -65,6 +65,7 @@ tecnicas <- data.frame(
     "Victimismo / inversión de roles",
     "Urgencia",
     "Y tú más",
+    "Sería de tontos hacer eso", 
     "El control del relato"
   ),
   `Por qué funciona` = c(
@@ -80,6 +81,7 @@ tecnicas <- data.frame(
     "Presentarse como víctima genera empatía automática y desvía la atención de las propias responsabilidades.",
     "Reduce el tiempo disponible para pensar, empujando a decidir antes de verificar.",
     "Responde a una crítica señalando la supuesta falta del otro, evitando abordar el argumento original.",
+    "Poner como obvio, que hacer algo que va en tu propia contra es una estupidez y por tanto la noticia es falsa. Ejemplos: Gobierno: Si alguien nos hubiese informado de lo que pasaría en Ceuta, habríamos hecho algo, Ayuso: siendo el próximo año las elecciones no voy ahora a comprarme un ático con el dinero de la Comunidad.", 
     "Consiste en influir en el momento y el enfoque con que se difunden las noticias que benefician para neutralizar el impacto de las que perjudican."
   ),
   check.names = FALSE,
